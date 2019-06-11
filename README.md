@@ -1,5 +1,6 @@
 # debugprint
 
-pip install git+git://github.com/hieonn/debugprint.git
+how to install
+pip install -e git+git://github.com/hieonn/debugprint.git#egg=dprint
 
-from dprint import dprint
+from dprint import dprint, dprintPretty
