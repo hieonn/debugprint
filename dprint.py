@@ -45,7 +45,7 @@ def dprint(x, tag='unknown'):
         print d
         PrettyPrinter().pprint(x)
     else :
-        d = ("{} : {} = {} ({})".format(tag, r, x, type(x)))
+        d = ("{} : {} = {} {}".format(tag, r, x, type(x)))
         print d
 
 # def dprintPretty(x) :
