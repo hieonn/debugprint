@@ -30,7 +30,7 @@ class PrettyPrinter(pprint.PrettyPrinter):
 def dprint(x, tag='unknown'):
     if tag == 'unknown' :
         caller = inspect.getframeinfo(inspect.stack()[1][0])
-        tag = "line : %s : " %(caller.lineno)
+        tag = "line : %s " %(caller.lineno)
     frame = inspect.currentframe().f_back
     s = inspect.getframeinfo(frame).code_context[0]
     r = re.search(r"\((.*)\)", s).group(1)
