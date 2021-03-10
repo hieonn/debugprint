@@ -63,7 +63,8 @@ def dprint(x, display=True, tag='unknown'):
             tag = "line : %s / %s - " %(caller.lineno, tag)
         frame = inspect.currentframe().f_back
         s = inspect.getframeinfo(frame).code_context[0]
-        r = re.search(r"\((.*)\)", s).group(1).replace(", display=True", "")
+        r = re.search(r"\((.*)\)", s).group(1).replace("display=True", "").replace(",", "")
+        r = re.sub(r"tag=.+", "", r)
         #d = ("{} : {} = {}".format(tag, r,x))
         data_type = type(x)
         #if data_type is list or data_type is dict or data_type is tuple or data_type is set or data_type is pandas.core.series.Series :
