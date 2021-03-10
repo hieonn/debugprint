@@ -56,9 +56,11 @@ def dprint(x, display=True, tag='unknown'):
         return
     else :
         print ("-----------------------------------------------------------------------------------")
+        caller = inspect.getframeinfo(inspect.stack()[1][0])
         if tag == 'unknown' :
-            caller = inspect.getframeinfo(inspect.stack()[1][0])
             tag = "line : %s " %(caller.lineno)
+        else :
+            tag = "line : %s / %s - " %(caller.lineno, tag)
         frame = inspect.currentframe().f_back
         s = inspect.getframeinfo(frame).code_context[0]
         r = re.search(r"\((.*)\)", s).group(1).replace(", display=True", "")
