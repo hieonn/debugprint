@@ -25,7 +25,7 @@ except ImportError:
 
 class dprint :
 
-    self.display = False
+    display = False
 
     def __init__(self, display) :
         self.display = display
