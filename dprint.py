@@ -60,7 +60,7 @@ class dprint :
             # 	return "'%s'" % _object.encode('utf8'), True, False
             return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
 
-    def dprint(self, x, _display = True,  tag='unknown'):
+    def dprint(self, x, _display=True,  tag='unknown'):
         _display = self.display and _display
         if _display == False :
                 return

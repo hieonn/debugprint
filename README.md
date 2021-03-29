@@ -10,6 +10,7 @@ how to check :
 
 python -m pip show 
 
-from dprint import dprint, dprintPretty
+from dprint import dprint
+dprint = dprint()
 dprint_init(True/False)
 dprint(variable, display, tag)
