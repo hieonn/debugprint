@@ -23,6 +23,11 @@ try:
 except ImportError:
     pass
 
+display = False
+
+def dprint_init(_init) :
+    display = _init
+
 def dfprint(df, head=10, embed=True):
     if embed == True :
         display(HTML(df.to_html()))
@@ -51,9 +56,10 @@ class PrettyPrinter(pprint.PrettyPrinter):
 		# 	return "'%s'" % _object.encode('utf8'), True, False
 		return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
 
-def dprint(x, display=True, tag='unknown'):
-    if display == False :
-        return
+def dprint(x, _display = True,  tag='unknown'):
+    _display = display and _display
+    if _display == False :
+            return
     else :
         print ("-----------------------------------------------------------------------------------")
         caller = inspect.getframeinfo(inspect.stack()[1][0])
