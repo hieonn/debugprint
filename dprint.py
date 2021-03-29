@@ -33,6 +33,9 @@ class dprint :
     def init(self, display) :
         self.display = display
 
+    def get_display(self) :
+        return self.display
+
     def dfprint(self, df, head=10, embed=True):
         if embed == True :
             display(HTML(df.to_html()))
