@@ -63,34 +63,54 @@ class dprint :
             # 	return "'%s'" % _object.encode('utf8'), True, False
             return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
 
-    def dprint(self, x, _display=False,  tag='unknown'):
-        _display = self.display or _display
+    def dprint(self, x, display=True,  force=False, tag='unknown'):
+
+        # force True : display wins
+        # force False : self.display wins
+
+        if self.display == True and  display==True and force==True:
+            _display = True
+        elif self.display == True and  display==True and force==False:
+            _display = True
+        elif self.display == True and  display==False  and force==True:
+            _display = False
+        elif self.display == True and  display==False and force==False:
+            _display = True
+        elif self.display == False and  display==True and force==True:
+            _display = True
+        elif self.display == False and  display==True and force==False:
+            _display = False
+        elif self.display == False and  display==False  and force==True:
+            _display = False
+        elif self.display == False and  display==False and force==False:
+            _display = False
+
         if _display == False :
-                return
+            return
+                
+        print ("-----------------------------------------------------------------------------------")
+        caller = inspect.getframeinfo(inspect.stack()[1][0])
+        if tag == 'unknown' :
+            tag = "line : %s " %(caller.lineno)
         else :
-            print ("-----------------------------------------------------------------------------------")
-            caller = inspect.getframeinfo(inspect.stack()[1][0])
-            if tag == 'unknown' :
-                tag = "line : %s " %(caller.lineno)
-            else :
-                tag = "line : %s / %s - " %(caller.lineno, tag)
-            frame = inspect.currentframe().f_back
-            s = inspect.getframeinfo(frame).code_context[0]
-            r = re.search(r"\((.*)\)", s).group(1).replace("display=True", "").replace(",", "")
-            r = re.sub(r"tag=.+", "", r)
-            #d = ("{} : {} = {}".format(tag, r,x))
-            data_type = type(x)
-            #if data_type is list or data_type is dict or data_type is tuple or data_type is set or data_type is pandas.core.series.Series :
-            if not (data_type is int or data_type is float or data_type is str or data_type is tuple or data_type is list or data_type is dict) :
-                try :
-                    d = ("{} : {} -> {} {}".format(tag, r, type(x), x.shape))
-                except :
-                    d = ("{} : {} -> {}".format(tag, r, type(x)))
-                print (d)
-                PrettyPrinter().pprint(x)
-            else :
-                d = ("{} : {} = {} -> {}".format(tag, r, x, type(x)))
-                print (d)
+            tag = "line : %s / %s - " %(caller.lineno, tag)
+        frame = inspect.currentframe().f_back
+        s = inspect.getframeinfo(frame).code_context[0]
+        r = re.search(r"\((.*)\)", s).group(1).replace("display=True", "").replace(",", "")
+        r = re.sub(r"tag=.+", "", r)
+        #d = ("{} : {} = {}".format(tag, r,x))
+        data_type = type(x)
+        #if data_type is list or data_type is dict or data_type is tuple or data_type is set or data_type is pandas.core.series.Series :
+        if not (data_type is int or data_type is float or data_type is str or data_type is tuple or data_type is list or data_type is dict) :
+            try :
+                d = ("{} : {} -> {} {}".format(tag, r, type(x), x.shape))
+            except :
+                d = ("{} : {} -> {}".format(tag, r, type(x)))
+            print (d)
+            PrettyPrinter().pprint(x)
+        else :
+            d = ("{} : {} = {} -> {}".format(tag, r, x, type(x)))
+            print (d)
 
 # def dprintPretty(x) :
 #     PrettyPrinter().pprint(x)
