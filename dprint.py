@@ -23,9 +23,9 @@ try:
 except ImportError:
     pass
 
-def dprint(x, display=True, tag='unknown'):
+def dprint(x, _display=True, tag='unknown'):
 
-    if display == False :
+    if _display == False :
         return
 
         print ("-----------------------------------------------------------------------------------")
