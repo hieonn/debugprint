@@ -54,7 +54,7 @@ except ImportError:
 
 
 
-class printy :
+class dprinty :
 
     display = False
 
