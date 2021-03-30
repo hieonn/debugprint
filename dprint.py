@@ -61,7 +61,7 @@ class PrettyPrinter(pprint.PrettyPrinter):
     # 	return "'%s'" % _object.encode('utf8'), True, False
         return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
 
-class oprint() :
+class eprint() :
 
     display = False
     
@@ -144,3 +144,6 @@ class oprint() :
 
 # def dprintPretty(x) :
 #     PrettyPrinter().pprint(x)
+
+if __name__ == "__main__":
+    pass
