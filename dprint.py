@@ -23,7 +23,7 @@ try:
 except ImportError:
     pass
 
-def dprint(self, x, display=True, tag='unknown'):
+def dprint(x, display=True, tag='unknown'):
 
     if display == False :
         return
