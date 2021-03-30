@@ -145,5 +145,3 @@ class dprint() :
 # def dprintPretty(x) :
 #     PrettyPrinter().pprint(x)
 
-if __name__ == "__main__":
-    pass
