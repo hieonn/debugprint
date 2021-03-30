@@ -27,7 +27,7 @@ def dprint(self, x, display=True, tag='unknown'):
 
     if display == False :
         return
-        
+
         print ("-----------------------------------------------------------------------------------")
         caller = inspect.getframeinfo(inspect.stack()[1][0])
         if tag == 'unknown' :
@@ -61,7 +61,7 @@ class PrettyPrinter(pprint.PrettyPrinter):
             # 	return "'%s'" % _object.encode('utf8'), True, False
             return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
 
-class print :
+class printy :
 
     display = False
 
