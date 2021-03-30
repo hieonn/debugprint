@@ -57,16 +57,6 @@ class dprint() :
 
     display = False
 
-    class PrettyPrinter(pprint.PrettyPrinter):
-        def format(self, _object, context, maxlevels, level):
-        # if isinstance(_object, unicode):
-        # 	return "'%s'" % _object.encode('utf8'), True, False
-        # if isinstance(_object, str):
-        # 	#_object = unicode(_object,'utf8')
-        # 	return "'%s'" % _object.encode('utf8'), True, False
-            return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
-
-    
     def __init__(self, display) :
         self.display = display
 
@@ -94,7 +84,15 @@ class dprint() :
             print(df.head(head))
             return(HTML(s+css))
 
-    
+    class PrettyPrinter(pprint.PrettyPrinter):
+        def format(self, _object, context, maxlevels, level):
+        # if isinstance(_object, unicode):
+        # 	return "'%s'" % _object.encode('utf8'), True, False
+        # if isinstance(_object, str):
+        # 	#_object = unicode(_object,'utf8')
+        # 	return "'%s'" % _object.encode('utf8'), True, False
+            return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
+   
     def printy(self, x, display=True,  force=False, tag='unknown'):
 
         # force True : display wins
