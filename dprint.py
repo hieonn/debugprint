@@ -93,7 +93,7 @@ class cprint() :
         # 	return "'%s'" % _object.encode('utf8'), True, False
             return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
    
-    def printy(self, x, show=True,  force=False, tag='unknown'):
+    def dprint(self, x, show=True,  force=False, tag='unknown'):
 
         # force True : display wins
         # force False : self.display wins
