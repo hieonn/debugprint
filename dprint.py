@@ -23,34 +23,34 @@ try:
 except ImportError:
     pass
 
-def dprint(self, x, display=True, tag='unknown'):
+# def dprint(self, x, display=True, tag='unknown'):
 
-    if display == False :
-        return
+#     if display == False :
+#         return
 
-        print ("-----------------------------------------------------------------------------------")
-        caller = inspect.getframeinfo(inspect.stack()[1][0])
-        if tag == 'unknown' :
-            tag = "line : %s " %(caller.lineno)
-        else :
-            tag = "line : %s / %s - " %(caller.lineno, tag)
-        frame = inspect.currentframe().f_back
-        s = inspect.getframeinfo(frame).code_context[0]
-        r = re.search(r"\((.*)\)", s).group(1).replace("display=True", "").replace(",", "")
-        r = re.sub(r"tag=.+", "", r)
-        #d = ("{} : {} = {}".format(tag, r,x))
-        data_type = type(x)
-        #if data_type is list or data_type is dict or data_type is tuple or data_type is set or data_type is pandas.core.series.Series :
-        if not (data_type is int or data_type is float or data_type is str or data_type is tuple or data_type is list or data_type is dict) :
-            try :
-                d = ("{} : {} -> {} {}".format(tag, r, type(x), x.shape))
-            except :
-                d = ("{} : {} -> {}".format(tag, r, type(x)))
-            print (d)
-            PrettyPrinter().pprint(x)
-        else :
-            d = ("{} : {} = {} -> {}".format(tag, r, x, type(x)))
-            print (d)
+#         print ("-----------------------------------------------------------------------------------")
+#         caller = inspect.getframeinfo(inspect.stack()[1][0])
+#         if tag == 'unknown' :
+#             tag = "line : %s " %(caller.lineno)
+#         else :
+#             tag = "line : %s / %s - " %(caller.lineno, tag)
+#         frame = inspect.currentframe().f_back
+#         s = inspect.getframeinfo(frame).code_context[0]
+#         r = re.search(r"\((.*)\)", s).group(1).replace("display=True", "").replace(",", "")
+#         r = re.sub(r"tag=.+", "", r)
+#         #d = ("{} : {} = {}".format(tag, r,x))
+#         data_type = type(x)
+#         #if data_type is list or data_type is dict or data_type is tuple or data_type is set or data_type is pandas.core.series.Series :
+#         if not (data_type is int or data_type is float or data_type is str or data_type is tuple or data_type is list or data_type is dict) :
+#             try :
+#                 d = ("{} : {} -> {} {}".format(tag, r, type(x), x.shape))
+#             except :
+#                 d = ("{} : {} -> {}".format(tag, r, type(x)))
+#             print (d)
+#             PrettyPrinter().pprint(x)
+#         else :
+#             d = ("{} : {} = {} -> {}".format(tag, r, x, type(x)))
+#             print (d)
 
 class PrettyPrinter(pprint.PrettyPrinter):
         def format(self, _object, context, maxlevels, level):
@@ -93,7 +93,7 @@ class printy :
             return(HTML(s+css))
 
     
-    def dprint(self, x, display=True,  force=False, tag='unknown'):
+    def printy(self, x, display=True,  force=False, tag='unknown'):
 
         # force True : display wins
         # force False : self.display wins
