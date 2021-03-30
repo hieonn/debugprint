@@ -23,9 +23,9 @@ try:
 except ImportError:
     pass
 
-def dprint(x, _display=True, tag='unknown'):
+def dprint(x, show=True, tag='unknown'):
 
-    if _display == False :
+    if show == False :
         return
 
         print ("-----------------------------------------------------------------------------------")
@@ -93,26 +93,26 @@ class cprint() :
         # 	return "'%s'" % _object.encode('utf8'), True, False
             return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
    
-    def printy(self, x, display=True,  force=False, tag='unknown'):
+    def printy(self, x, show=True,  force=False, tag='unknown'):
 
         # force True : display wins
         # force False : self.display wins
 
-        if self.display == True and  display==True and force==True:
+        if self.display == True and  show==True and force==True:
             _display = True
-        elif self.display == True and  display==True and force==False:
+        elif self.display == True and  show==True and force==False:
             _display = True
-        elif self.display == True and  display==False  and force==True:
+        elif self.display == True and  show==False  and force==True:
             _display = False
-        elif self.display == True and  display==False and force==False:
+        elif self.display == True and  show==False and force==False:
             _display = True
-        elif self.display == False and  display==True and force==True:
+        elif self.display == False and  show==True and force==True:
             _display = True
-        elif self.display == False and  display==True and force==False:
+        elif self.display == False and  show==True and force==False:
             _display = False
-        elif self.display == False and  display==False  and force==True:
+        elif self.display == False and  show==False  and force==True:
             _display = False
-        elif self.display == False and  display==False and force==False:
+        elif self.display == False and  show==False and force==False:
             _display = False
 
         if _display == False :
