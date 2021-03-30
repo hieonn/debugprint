@@ -61,7 +61,7 @@ class PrettyPrinter(pprint.PrettyPrinter):
     # 	return "'%s'" % _object.encode('utf8'), True, False
         return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
 
-class dprinty :
+class dprint :
 
     display = False
 
