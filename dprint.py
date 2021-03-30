@@ -23,7 +23,7 @@ try:
 except ImportError:
     pass
 
-def oprint(self, x, display=True, tag='unknown'):
+def dprint(self, x, display=True, tag='unknown'):
 
     if display == False :
         return
@@ -61,10 +61,9 @@ class PrettyPrinter(pprint.PrettyPrinter):
     # 	return "'%s'" % _object.encode('utf8'), True, False
         return pprint.PrettyPrinter.format(self, _object, context, maxlevels, level)
 
-class dprint :
+class oprint() :
 
     display = False
-
     
     def __init__(self, display) :
         self.display = display
