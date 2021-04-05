@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
         name    = 'dprint', 
-        version = '1.2.7', 
+        version = '1.2.8', 
         py_modules = ['dprint'], 
         author = 'hieonn', 
         author_email = '',
