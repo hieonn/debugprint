@@ -12,9 +12,8 @@ import pprint
 
 desired_width=600
 
-from IPython.display import display, HTML
-
 try:
+    from IPython.display import display, HTML
     import numpy as np
     np.set_printoptions(linewidth=desired_width)
     import pandas as pd
